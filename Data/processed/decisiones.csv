@@ -1,0 +1,22 @@
+paso,columna,accion,filas_afectadas,justificacion
+conversión numérica,asistencia_pct,quitar % y convertir a numérico; guiones a nulo,502,La asistencia debe ser numérica para calcular estadísticas y cuartiles; el guion representa un dato faltante que se conserva sin imputar para no inventar una medición.
+conversión numérica,horas_trabajo_semana,convertir a numérico; guiones a nulo,2822,Las horas deben ser numéricas; el guion es un faltante disfrazado y se trata según trabaja en el paso de valores imposibles.
+conversión numérica,distancia_km,reemplazar 999 por nulo y convertir a numérico,152,"999 es un código de faltante, no una distancia real en kilómetros."
+unificación de categorías,programa,"quitar espacios, normalizar mayúsculas y unificar variantes",260,Se consolidan diferencias de escritura que representan la misma categoría; no se mezclan categorías con significados distintos.
+unificación de categorías,jornada,"quitar espacios, normalizar mayúsculas y unificar variantes",485,Se consolidan diferencias de escritura que representan la misma categoría; no se mezclan categorías con significados distintos.
+unificación de categorías,genero,"quitar espacios, normalizar mayúsculas y unificar variantes",559,Se consolidan diferencias de escritura que representan la misma categoría; no se mezclan categorías con significados distintos.
+unificación de categorías,ciudad_procedencia,"quitar espacios, normalizar mayúsculas y unificar variantes",542,Se consolidan diferencias de escritura que representan la misma categoría; no se mezclan categorías con significados distintos.
+conversión de fechas,fecha_matricula,convertir formatos AAAA-MM-DD y DD/MM/AAAA a fecha,3052,La columna mezcla dos formatos; se intenta cada formato explícitamente y se combinan los resultados sin invertir día y mes.
+duplicados,todas las columnas,eliminar filas duplicadas y reiniciar índice,150,Las filas repetidas contienen el mismo identificador y todos los datos; conservar ambas inflaría los conteos del análisis.
+faltantes,promedio_acumulado,eliminar filas sin promedio,298,No es válido inventar o imputar una nota; estas filas no pueden aportar a análisis que requieren el promedio.
+faltantes,ciudad_procedencia,reemplazar nulos por Sin dato,96,La categoría desconocida no impide conservar al estudiante y evita atribuirle una procedencia o tipo de colegio inventados.
+faltantes,tipo_colegio,reemplazar nulos por Sin dato,145,La categoría desconocida no impide conservar al estudiante y evita atribuirle una procedencia o tipo de colegio inventados.
+faltantes,asistencia_pct,conservar nulos sin imputar,197,No hay información para reconstruir el valor; se conserva como nulo en lugar de inventar una medición.
+faltantes,distancia_km,conservar nulos sin imputar,334,No hay información para reconstruir el valor; se conserva como nulo en lugar de inventar una medición.
+faltantes,motivo_retiro,conservar nulos sin imputar,6562,El motivo solo aplica a quienes desertaron; el nulo de estudiantes activos o graduados es esperado y se conserva.
+valores imposibles,edad,reemplazar edades fuera de 15-60 por la mediana (22),12,Las edades fuera del rango definido por la guía son errores; la mediana de edades válidas evita perder esas filas y no se distorsiona por extremos.
+valores imposibles,promedio_acumulado,marcar notas mayores a 5 como nulas y eliminar esas filas,15,"La escala va de 0 a 5; no hay información para reconstruir una nota válida, por lo que no se imputa."
+valores imposibles,horas_trabajo_semana,asignar 0 horas a quienes no trabajan,2703,"Si trabaja es no, las horas laborales semanales son cero; se evita interpretar el guion como una cantidad."
+valores imposibles,horas_trabajo_semana,reemplazar valores mayores a 100 por la mediana laboral (24),29,"Más de 100 horas semanales excede un límite razonable; se usa la mediana de quienes trabajan, no la de toda la población."
+variables nuevas,desertor,crear indicador booleano a partir de estado,9687,Permite calcular directamente la proporción de estudiantes cuyo estado es desertor.
+variables nuevas,cuartil_asistencia,crear cuatro grupos de igual tamaño con qcut,9490,Los cuartiles facilitan comparar grupos de tamaño parecido sin depender de cada valor exacto de asistencia.

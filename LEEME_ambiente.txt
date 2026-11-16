@@ -16,7 +16,7 @@ CREAR Y ACTIVAR EL AMBIENTE VIRTUAL
    pip install -r requirements.txt
 
 4. Ejecutar el programa:
-   python main.py
+   python analisis_desercion.py
 
 5. Para salir del ambiente:
    deactivate

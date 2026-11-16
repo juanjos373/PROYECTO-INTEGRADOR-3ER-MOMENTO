@@ -1,0 +1,5 @@
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+Data/processed/dataset_limpio.csv
